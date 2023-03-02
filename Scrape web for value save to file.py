@@ -26,7 +26,7 @@ def clean_text(text):
 
 def write_file(text):
   """Write input text into a text file"""
-  filename = f"{dt.now().strftime('%Y-%m-%d %H-%M-%S')}.txt"
+  filename = f"C:\\Users\\donh\\OneDrive - Dienen\\Python\\files\\{dt.now().strftime('%Y-%m-%d %H-%M-%S')}.txt"
   with open(filename, 'w') as file:
     file.write(text)
 
