@@ -8,6 +8,12 @@ def choose_first():
     else:
         return 'Player 2'
 
+def choose_next(player):
+    if player=='Player 1':
+        return 'Player 2'
+    else:
+        return 'Player 1'
+    
 def display_board(board):
     
     #print(f'   |   |   ')
@@ -112,38 +118,24 @@ while True:
 
 
     while game_on:
-        #Player 1 Turn
+        #Set marker for player
         if turn == 'Player 1':
-
-            
-            print(turn)
-            pos = player_choice(game_board)
-            place_marker(game_board,player1,pos)
-            #print('\n'*100)
-            display_board(game_board)
-            if win_check(game_board,player1):
-                print('Player 1 is the winner!')
-                break
-            elif full_board_check(game_board):
-                print('Tie Game!')
-                break
-            turn = 'Player 2'
+            marker = player1
         else:
-
-            # Player2's turn.
+            marker = player2
             
-            print(turn)
-            pos = player_choice(game_board)
-            place_marker(game_board,player2,pos)
-            #print('\n'*100)
-            display_board(game_board)
-            if win_check(game_board,player2):
-                print('Player 2 is the winner!')
-                break
-            elif full_board_check(game_board):
-                print('Tie Game!')
-                break
-            turn = 'Player 1'
+        print(turn)
+        pos = player_choice(game_board)
+        place_marker(game_board,marker,pos)
+        print('\n'*12)
+        display_board(game_board)
+        if win_check(game_board,marker):
+            print(f'{turn} is the winner!')
+            break
+        elif full_board_check(game_board):
+            print('Tie Game!')
+            break
+        turn = choose_next(turn)
 
     if not replay():
         break
